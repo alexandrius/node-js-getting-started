@@ -33,17 +33,17 @@ function writeChanges(res, method, data) {
       if (data) {
          const output = `[${method}] | Temperature data written = ${data}`;
          res.write(`Current - ${output}`);
-         // res.write("</br>");
-         // res.write("</br>");
-         // res.write("</br>");
-         // const logArray = [
-         //    { date: dayjs().format(), value: output },
-         //    ...JSON.parse(buf.toString()),
-         // ];
-         // res.write(htmlTable(logArray));
-         // fs.writeFileSync(logfile, JSON.stringify(logArray));
+         res.write("</br>");
+         res.write("</br>");
+         res.write("</br>");
+         const logArray = [
+            { date: dayjs().format(), value: output },
+            ...JSON.parse(buf.toString()),
+         ];
+         res.write(htmlTable(logArray));
+         fs.writeFileSync(logfile, JSON.stringify(logArray));
       } else {
-         // res.write(htmlTable(JSON.parse(buf.toString())));
+         res.write(htmlTable(JSON.parse(buf.toString())));
       }
 
       res.end();
