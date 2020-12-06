@@ -3,7 +3,7 @@ const url = require("url");
 const fs = require("fs");
 const dayjs = require("dayjs");
 
-const logfile = "./log.json";
+const logfile = "./log2.json";
 
 const row = (html) => `<tr>\n${html}</tr>\n`,
    heading = (object) =>
