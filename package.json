@@ -11,9 +11,9 @@
     "test": "node test.js"
   },
   "dependencies": {
+    "dayjs": "^1.9.7"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/heroku/node-js-getting-started"
