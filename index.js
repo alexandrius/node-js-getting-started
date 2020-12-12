@@ -43,8 +43,8 @@ function writeChanges(res, method, data) {
          res.write(htmlTable(logArray));
          fs.writeFileSync(logfile, JSON.stringify(logArray));
       } else {
-         if (logArray.length > 0)
-            res.write(htmlTable(JSON.parse(buf.toString())));
+         const logArray = JSON.parse(buf.toString());
+         if (logArray.length > 0) res.write(htmlTable(logArray));
       }
 
       res.end();
