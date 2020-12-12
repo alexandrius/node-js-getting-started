@@ -43,7 +43,8 @@ function writeChanges(res, method, data) {
          res.write(htmlTable(logArray));
          fs.writeFileSync(logfile, JSON.stringify(logArray));
       } else {
-         res.write(htmlTable(JSON.parse(buf.toString())));
+         if (logArray.length > 0)
+            res.write(htmlTable(JSON.parse(buf.toString())));
       }
 
       res.end();
@@ -71,6 +72,8 @@ http
       } else if (req.url === "/readTemp") {
          writeChanges(res, req.method);
       } else {
+         res.write("Port = " + process.env.PORT);
+         res.write("</br>");
          res.write("endpoint not found");
          res.end();
       }
