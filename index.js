@@ -34,6 +34,26 @@ io.on("connection", function (socket) {
       });
       io.emit("chat message", msg);
    });
+
+   socket.on("readHoldingRegisters", function (data) {
+      io.emit("chat message", JSON.stringify(data));
+   });
+
+   console.log("IO = emit readHolding Registers");
+   io.emit("readHoldingRegisters", {
+      unit: 1,
+      address: 0,
+      length: 10,
+      interval: 1000,
+   });
+
+   console.log("Socket = emit readHolding Registers");
+   socket.emit("readHoldingRegisters", {
+      unit: 1,
+      address: 0,
+      length: 10,
+      interval: 1000,
+   });
 });
 
 http.listen(port, function () {
