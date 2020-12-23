@@ -28,6 +28,9 @@ const wss = new Server({ server });
 
 wss.on("connection", (ws) => {
    console.log("Client connected");
+   ws.send(JSON.stringify({
+      message:'Hello'
+   }))
    ws.on("message", function (data, flags) {
       console.log("websocket received a message");
       console.log(data);
