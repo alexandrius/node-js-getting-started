@@ -14,8 +14,8 @@ var port = process.env.PORT || 3000;
 var cors = require("cors");
 app.use(
    cors({
-      origin: true,
-      credentials: true,
+      origin: "*",
+      methods: ["GET", "POST"],
    })
 );
 
@@ -28,11 +28,13 @@ const wss = new Server({ server });
 
 wss.on("connection", (ws) => {
    console.log("Client connected");
+   ws.on("message", function (data, flags) {
+      console.log("websocket received a message");
+      console.log(data);
+   });
+
    ws.on("close", () => console.log("Client disconnected"));
 });
-wss.onmessage = (message) => {
-   console.log("message", message);
-};
 
 // app.get("/", function (req, res) {
 //    res.sendFile(__dirname + "/index.html");
